@@ -6,22 +6,22 @@
 
 
 
-// let globalName = "Global";
+let globalName = "Global";
 
-// function outer() {
-//     let outerName = "Outer";
+function outer() {
+    let outerName = "Outer";
 
-//     function inner() {
-//         let innerName = "Inner";
-//         console.log(outerName);
-//         console.log(globalName);
-//         console.log(innerName);
-//     }
+    function inner() {
+        let innerName = "Inner";
+        console.log(outerName);
+        console.log(globalName);
+        console.log(innerName);
+    }
 
-//     inner();
-// }
+    inner();
+}
 
-// outer();
+outer();
 
 
 
@@ -38,4 +38,6 @@ const increment = counter();
 
 console.log(increment());
 console.log(increment());
+console.log(increment()); 
+console.log(increment()); 
 console.log(increment()); 
