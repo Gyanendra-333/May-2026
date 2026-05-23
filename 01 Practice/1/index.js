@@ -38,6 +38,6 @@ const increment = counter();
 
 console.log(increment());
 console.log(increment());
-console.log(increment()); 
-console.log(increment()); 
-console.log(increment()); 
+console.log(increment());
+console.log(increment());
+console.log(increment());
