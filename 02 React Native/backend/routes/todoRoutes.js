@@ -1,60 +1,15 @@
-import { Router } from "express";
-const router = Router();
+import express from "express";
 
-import { create, find, findByIdAndUpdate, findByIdAndDelete } from "../models/Todo.js";
+import { getTodos, createTodo, updateTodo, deleteTodo, } from "../controllers/todoController.js";
 
-// Create
-router.post("/", async (req, res) => {
-    try {
-        const todo = await create({
-            title: req.body.title,
-        });
+const router = express.Router();
 
-        res.status(201).json(todo);
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
+router.get("/", getTodos);
 
-// Get All
-router.get("/", async (req, res) => {
-    try {
-        const todos = await find().sort({ createdAt: -1 });
+router.post("/", createTodo);
 
-        res.json(todos);
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
+router.put("/:id", updateTodo);
 
-// Update
-router.put("/:id", async (req, res) => {
-    try {
-        const todo = await findByIdAndUpdate(
-            req.params.id,
-            {
-                title: req.body.title,
-            },
-            { new: true }
-        );
-
-        res.json(todo);
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
-
-// Delete
-router.delete("/:id", async (req, res) => {
-    try {
-        await findByIdAndDelete(req.params.id);
-
-        res.json({
-            message: "Todo Deleted",
-        });
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
+router.delete("/:id", deleteTodo);
 
 export default router;
