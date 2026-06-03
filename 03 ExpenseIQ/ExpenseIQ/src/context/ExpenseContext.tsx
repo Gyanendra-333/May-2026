@@ -64,30 +64,8 @@ interface ExpenseContextType {
     >;
 }
 
-const [queueCount, setQueueCount] = useState(0);
-const [syncing, setSyncing] = useState(false);
-const [filters, setFilters] =
-    useState<ExpenseFilters>({
-        categories: [],
-        startDate: null,
-        endDate: null,
-        minAmount: '',
-        maxAmount: '',
-    });
 
-const loadQueueCount =
-    async () => {
-        try {
-            const queue =
-                await getPendingQueue();
 
-            setQueueCount(
-                queue.length,
-            );
-        } catch (error) {
-            console.log(error);
-        }
-    };
 
 const ExpenseContext =
     createContext<ExpenseContextType | null>(null);
@@ -108,6 +86,32 @@ export const ExpenseProvider = ({
 
     const [error, setError] =
         useState<string | null>(null);
+
+
+    const [queueCount, setQueueCount] = useState(0);
+    const [syncing, setSyncing] = useState(false);
+    const [filters, setFilters] =
+        useState<ExpenseFilters>({
+            categories: [],
+            startDate: null,
+            endDate: null,
+            minAmount: '',
+            maxAmount: '',
+        });
+
+    const loadQueueCount =
+        async () => {
+            try {
+                const queue =
+                    await getPendingQueue();
+
+                setQueueCount(
+                    queue.length,
+                );
+            } catch (error) {
+                console.log(error);
+            }
+        };
 
     const refreshExpenses = async () => {
         try {
