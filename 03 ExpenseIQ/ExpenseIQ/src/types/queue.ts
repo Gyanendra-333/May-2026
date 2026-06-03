@@ -1,6 +1,9 @@
 import { Expense } from './expense';
 
-export type QueueAction = 'CREATE' | 'UPDATE' | 'DELETE';
+export type QueueAction =
+    | 'CREATE'
+    | 'UPDATE'
+    | 'DELETE';
 
 export interface QueueItem {
     type: QueueAction;

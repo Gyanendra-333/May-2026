@@ -5,6 +5,21 @@ const api = axios.create({
     timeout: 10000,
 });
 
+export const is404Error = (
+    error: unknown,
+): boolean => {
+    if (
+        axios.isAxiosError(error)
+    ) {
+        return (
+            error.response
+                ?.status === 404
+        );
+    }
+
+    return false;
+};
+
 export const getExpenses = async () => {
     try {
         const response = await api.get('/posts');
