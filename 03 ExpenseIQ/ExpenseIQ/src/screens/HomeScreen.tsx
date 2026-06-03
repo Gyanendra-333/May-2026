@@ -46,15 +46,7 @@ type Props =
         'Home'
     >;
 
-const {
-    expenses,
-    deleteExpenseById,
-    queueCount,
-    syncing,
-    syncNow,
-    filters,
-    loading
-} = useExpenses();
+
 
 type SortType =
     | 'date'
@@ -67,6 +59,11 @@ const HomeScreen = ({
     const {
         expenses,
         deleteExpenseById,
+        queueCount,
+        syncing,
+        syncNow,
+        filters,
+        loading
     } = useExpenses();
 
     const [search, setSearch] =
